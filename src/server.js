@@ -7,8 +7,7 @@ require("dotenv").config();         // leer variables de entorno del archivo .en
 
 // importar las rutas
 const routes = require("./routes");
-
-
+const { connectDB } = require("./config/db");
 const app = express(); // inicializar la aplicacion express
 
 
@@ -24,7 +23,7 @@ app.use("/", routes);
 
 // definir el puerto desde el archivo .env o usar 3000 por defecto
 const PORT = process.env.PORT || 3000;
-
+connectDB();
 
 // levantar el servidor
 app.listen(PORT, () => {
